@@ -26,13 +26,13 @@ class Point:
         return Point(self.x - other.x, self.y - other.y)
 
     def __mul__(self, other):       # v1 * v2, iloczyn skalarny
-        return Point(self.x * other.x,  self.y * other.y)
+        return (self.x * other.x +  self.y * other.y)
 
     def cross(self, other):         # v1 x v2, iloczyn wektorowy 2D
         return Point(self.x * other.y, - self.y * other.x)
 
     def length(self):          # długość wektora
-        return round(math.sqrt(self.x**2 + self.y**2), 2)
+        return (math.sqrt(self.x**2 + self.y**2))
 
 # Kod testujący moduł.
 
@@ -60,23 +60,24 @@ class TestPoint(unittest.TestCase):
         self.assertFalse(self.p2.__ne__(Point(-2, 3))) 
 
     def test_add(self):
-        self.assertEqual(self.p1.__add__(self.p2), Point(-1, 5))
-        self.assertEqual(self.p2.__add__(self.p3), Point(7, 0))
+        self.assertEqual(self.p1 + self.p2, Point(-1, 5))
+        self.assertEqual(self.p2 + self.p3, Point(7, 0))
 
     def test_sub(self):
         self.assertEqual(self.p1.__sub__(self.p2), Point(3, -1))
         self.assertEqual(self.p2.__sub__(self.p3), Point(-11, 6))
 
     def test_mul(self):
-        self.assertEqual(self.p1.__mul__(self.p2), Point(-2, 6))
-        self.assertEqual(self.p2.__mul__(self.p3), Point(-18, -9))
+        self.assertEqual(self.p1.__mul__(self.p2), 4)
+        self.assertEqual(self.p2.__mul__(self.p3), -27)
 
     def test_cross(self):
         self.assertEqual(self.p1.cross(self.p2), Point(3, 4))
         self.assertEqual(self.p2.cross(self.p3), Point(6, -27))
 
     def test_length(self):
-        self.assertEqual(self.p1.length(), 2.24)
-        self.assertEqual(self.p2.length(), 3.61)
+        self.assertEqual(round(self.p1.length(),2), 2.24)
+        self.assertEqual(round(self.p2.length(),2), 3.61)
+
 if __name__ == "__main__":
         unittest.main()
