@@ -5,7 +5,7 @@ def calc_pi(n=100):
 	punkty_kwadrat= 0
 	punkty_kolo= 0
 
-	for i in range(n**2): 
+	for i in range(n): 
 		los_x= random.uniform(-1, 1) 
 		los_y= random.uniform(-1, 1) 
 
