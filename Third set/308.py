@@ -1,7 +1,13 @@
-def intersection(sequence1, sequence2) -> list:
+def intersection(sequence1, sequence2):
 	print('INTERSECTION:')
-	sequence1.sort()
-	sequence2.sort()
+	if(isinstance(sequence1, tuple)):
+		sequence1 = sorted(sequence1)
+	else:
+		sequence1.sort()
+	if(isinstance(sequence2, tuple)):
+		sequence2 = sorted(sequence2)
+	else:
+		sequence2.sort()
 
 	result = []
 
@@ -14,7 +20,7 @@ def intersection(sequence1, sequence2) -> list:
 					result.append(elem1)
 	return result
 
-def sum(sequence1, sequence2) -> list:
+def sum(sequence1, sequence2):
 	print('SUM:')
 	sequence1 = list(dict.fromkeys(sequence1))
 	result = []

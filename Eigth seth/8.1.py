@@ -4,7 +4,7 @@ def solve1(a, b, c):
 	while i * a <= c: 
 		if (-c - (i * a)) % b == 0: 
 			print("x = ",i ,", y = ", 
-			int((-c - (i * a)) / b)) 
+			((-c - (i * a)) / b)) 
 			return 0
 		i = i + 1
 	
