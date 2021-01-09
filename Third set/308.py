@@ -22,16 +22,22 @@ def intersection(sequence1, sequence2):
 
 def sum(sequence1, sequence2):
 	print('SUM:')
-	sequence1 = list(dict.fromkeys(sequence1))
-	result = []
+	if(isinstance(sequence1, tuple)):
+		b=set()
+		result=[element for element in sequence1
+    	if not (tuple(element) in b
+        	or  b.add(tuple(element)))]
+	else:
+		sequence1 = list(dict.fromkeys(sequence1))
 
-	for elem1 in sequence1:
-		if elem1 not in result:
-			result.append(elem1)
-	return result
+	sequence1 = list(result)
 
+	for elem1 in sequence2:
+		if elem1 not in sequence1:
+			sequence1.append(elem1)
+	return sequence1
 
-firstList = ['a', 'b', 'c', 'gf', 'bdd']
+firstList = ('a', 'b', 'c', 'gf', 'bdd', 'bdd')
 secondList = ['bdd', 'x', 'y', 'z','a','a']
 
 print(intersection(firstList, secondList))
