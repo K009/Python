@@ -28,14 +28,13 @@ class Point:
     def __mul__(self, other):       # v1 * v2, iloczyn skalarny
         return (self.x * other.x +  self.y * other.y)
 
-    def cross(self, other):         # v1 x v2, iloczyn wektorowy 2D
-        return Point(self.x * other.y, - self.y * other.x)
+    def cross(self, other):         # v1 x v2, iloczyn wektorowy 2D (liczba)
+        return self.x * other.y - self.y * other.x
 
     def length(self):          # długość wektora
         return (math.sqrt(self.x**2 + self.y**2))
 
 # Kod testujący moduł.
-
 import unittest
 
 class TestPoint(unittest.TestCase):
@@ -72,8 +71,8 @@ class TestPoint(unittest.TestCase):
         self.assertEqual(self.p2.__mul__(self.p3), -27)
 
     def test_cross(self):
-        self.assertEqual(self.p1.cross(self.p2), Point(3, 4))
-        self.assertEqual(self.p2.cross(self.p3), Point(6, -27))
+        self.assertEqual(self.p1.cross(self.p2), 7)
+        self.assertEqual(self.p2.cross(self.p3), -21)
 
     def test_length(self):
         self.assertEqual(round(self.p1.length(),2), 2.24)

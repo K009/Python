@@ -14,7 +14,7 @@ class Rectangle:
         return "Rectangle(" + str(self.pt1.x) + ", " + str(self.pt1.y) + ", " + str(self.pt2.x) + ", " + str(self.pt2.y) + ")"        
 
     def __eq__(self, other):   # obsługa rect1 == rect2
-        return self.pt2.x - self.pt1.x == other.pt2.x - other.pt1.x and self.pt2.y - self.pt1.y == other.pt2.y - other.pt1.y
+        return self.pt2.__sub__(self.pt1) == other.pt2.__sub__(other.pt1) 
 
     def __ne__(self, other):        # obsługa rect1 != rect2
         return not self.__eq__(other)
